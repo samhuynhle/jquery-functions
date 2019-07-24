@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Sam's jQuery Functions Practice</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="header_h1">Add Class Here</h1>
+                <button class="header_btn">AddClass</button>
+                <button class="header_btn2">RemoveClass</button>
+                <p class="header_paragraph">Click the button to add red background to this paragraph. It adds the class 'red'.</p>
+            </div>
+            <div class="main">
+                <h1 class="main_h1">Slidetoggle</h1>
+                <button class="main_btn">Slidetoggle</button>
+                <p class="main_paragraph">Surprise!</p>
+                <img src="jonsnow.jpg" class="main_jonsnow">
+                <button class="main_hiddenbtn">Hidden button?</button>
+                <img src="daenerys.png" class="main_daenerysTroll">
+            </div>
+            <div class="footer">
+                <h1 class="footer_h1">Append</h1>
+                <button class="footer_btn">Append</button>
+                <p class="footer_paragraph">Click the button to append a new paragraph and change the header!</p>
+                
+                <p class="forms"></p>
+ 
+                <select id="single">
+                  <option>Jon Snow</option>
+                  <option>Daenerys</option>
+                </select>
+                 
+                <select id="multiple" multiple="multiple">
+                  <option selected="selected">Jon and Daenerys</option>
+                  <option>Daenerys and Jon </option>
+                  <option selected="selected">Daenerys Targaryan and Jon Snow</option>
+                </select>
+
+            </div>
+        </div>
+
+        <!--jQuery Code below-->
+        <script>
+        //jQuery starts here
+
+        //header jQuery functions
+            $('.header_btn').click( function() {
+                $('.header_paragraph').addClass("red");
+            } )
+            ;
+            $('.header_btn2').click( function() {
+                $('.header_paragraph').removeClass("red");
+            } )
+            ;
+            $('.header_btn').click( function() {
+                $('.header_h1').addClass("bigger");
+            } )
+            ;
+            $('.header_btn2').click( function() {
+                $('.header_h1').removeClass("bigger");
+            } )
+            ;
+
+        //main jQuery functions
+            $('.main_btn').click(function() {
+                $('.main_h1, .main_paragraph').slideDown("slow", function(){
+                //Annimcation complete.
+                })
+            } )
+            ;
+            $('.main_btn').click(function() {
+                $('.main_jonsnow, .main_hiddenbtn').slideToggle("slow", function () {
+                    //Annimation complete.
+                });
+            })
+            ;
+            $('.main_hiddenbtn').click(function() {
+                $('.main_daenerysTroll').fadeToggle("slow", function () {
+                    //Annimation complete.
+                });
+            })
+            ;
+        //footer
+
+            $('.footer_btn').click(function() {
+                for (var i = 0; i < 10; i ++) {
+                $('.footer_paragraph').append(' Daenerys is the true heir to the Iron Throne!')
+                }   
+            })
+            ;
+            $('.footer_btn').click(function() {
+                for (var i = 0; i < 10; i ++) {
+                $('.footer_h1').html('Jon is the King of the North!')
+                }   
+            })
+            ;
+            $("#check1").prop("checked", false);
+            $( "#check1" )
+            .change(function() {
+                var $input = $( this );
+                $('.footer_checks').html(".attr( 'unchecked' ): <b>" + $input.attr( "checked") + "</b><br>" +
+                ".prop( 'checked' ): <b>" + $input.prop( "checked" ) + "</b><br>" +
+                ".is( ':checked' ): <b>" + $input.is( ":checked" ) + "</b>" );
+            })
+            ;
+
+            function displayVals() {
+                var singleValues = $( "#single" ).val();
+                var multipleValues = $( "#multiple" ).val() || [];
+                // When using jQuery 3:
+                // var multipleValues = $( "#multiple" ).val();
+                $( ".forms" ).html( "<b>Single:</b> " + singleValues +
+                    " <b>Multiple:</b> " + multipleValues.join( ", " ) );
+            }
+                
+            $( "select" ).change( displayVals );
+            displayVals();
+
+        </script>
+    </body>
+</html>

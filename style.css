@@ -1,0 +1,41 @@
+.container{
+    display: inline-block;
+    width: 800px;
+    background-color: silver;
+}
+.header, .main, .footer{
+    border-color: black;
+    border-style: solid;
+    border-width: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+.red{
+    color: blue;
+    background-color: red;
+    border-color: red;
+    border-style: solid;
+    border-width: 1px;
+}
+.bigger{
+    font-size: 80px;
+}
+.header_btn, .header_btn2{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+.main_jonsnow, .main_daenerysTroll{
+    height: 100px;
+    display: none;
+}
+.main_h1, .main_paragraph{
+    display: none;
+}
+.main_hiddenbtn{
+    display:none;
+    background-color: silver;
+    color: silver;
+    border-width: none;
+    margin: 50px;
+}
